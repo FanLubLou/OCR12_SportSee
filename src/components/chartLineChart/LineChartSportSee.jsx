@@ -1,61 +1,26 @@
 import React, { PureComponent } from 'react';
-import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
-
-const data = [
-  {
-    name: 'Page A',
-    uv: 4000,
-    pv: 2400,
-    amt: 2400,
-  },
-  {
-    name: 'Page B',
-    uv: 3000,
-    pv: 1398,
-    amt: 2210,
-  },
-  {
-    name: 'Page C',
-    uv: 2000,
-    pv: 9800,
-    amt: 2290,
-  },
-  {
-    name: 'Page D',
-    uv: 2780,
-    pv: 3908,
-    amt: 2000,
-  },
-  {
-    name: 'Page E',
-    uv: 1890,
-    pv: 4800,
-    amt: 2181,
-  },
-  {
-    name: 'Page F',
-    uv: 2390,
-    pv: 3800,
-    amt: 2500,
-  },
-  {
-    name: 'Page G',
-    uv: 3490,
-    pv: 4300,
-    amt: 2100,
-  },
-];
+import { LineChart, Area, Line, XAxis, YAxis, Tooltip, ResponsiveContainer, AreaChart } from 'recharts';
 
 export default class LineChartSportSee extends PureComponent {
-  static demoUrl = 'https://codesandbox.io/p/sandbox/line-chart-width-xaxis-padding-8v7952';
-
+  
   render() {
+    const { data } = this.props;
+
+    function CustomTooltip({ active, payload }) {
+      if (active && payload) {
+        return <div className='tooltipContainerLineChart'>{`${payload[0].value} min`}</div>;
+      }
+    
+      return null;
+    }
+
     return (
-      <ResponsiveContainer width="100%" height="100%">
+      <ResponsiveContainer width="100%" height="100%" className="lineChart">
+        
         <LineChart
+          data={data}
           width={500}
           height={300}
-          data={data}
           margin={{
             top: 5,
             right: 30,
@@ -63,14 +28,57 @@ export default class LineChartSportSee extends PureComponent {
             bottom: 5,
           }}
         >
-          <CartesianGrid strokeDasharray="3 3" />
-          <XAxis dataKey="name" />
-          <YAxis />
-          <Tooltip />
-          <Legend />
-          <Line type="monotone" dataKey="pv" stroke="#8884d8" activeDot={{ r: 8 }} />
-          <Line type="monotone" dataKey="uv" stroke="#82ca9d" />
-        </LineChart>
+          <text
+            x={40}
+            y={40}
+            fill="white"
+            opacity={0.5}
+            fontWeight={500}
+            textAnchor="left"
+            dominantBaseline="central"
+          >
+            <tspan x={30} y={40} fontSize="15">
+              Durée moyenne des
+            </tspan>
+            <tspan x={30} y={65} fontSize="15">
+              sessions
+            </tspan>
+          </text>          
+          <XAxis
+            dataKey="day"
+            axisLine={false}
+            tickLine={false}
+            tick={{
+              fontSize: "clamp(20px, 2vw, 24px)",
+              fontWeight: "500",
+              fill: "#fff",
+              opacity: "0.5",
+            }}
+          />
+          <YAxis hide={true} domain={["dataMin - 20", "dataMax + 40"]} />
+          <Tooltip
+            content={<CustomTooltip />}
+            cursor={{
+              stroke: "rgba(0, 0, 0, 0.1)",
+              strokeWidth: 32,
+            }}
+          />
+          <Line
+            type="natural"
+            dataKey="sessionLength"
+            stroke="#FBFBFB"
+            dot={false}
+            activeDot={{ 
+              stroke: "rgba(255,255,255, 0.3)",
+              strokeWidth: 10,
+              r: 5,
+            }} />
+           <linearGradient id="colorUv" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="5%" stopColor="#FFFFFF" stopOpacity={0.8} />
+            <stop offset="95%" stopColor="rgba(255, 255, 255, 0.403191)" stopOpacity={0} />
+          </linearGradient>
+          
+          </LineChart>
       </ResponsiveContainer>
     );
   }

@@ -1,75 +1,84 @@
 import React, { PureComponent } from 'react';
-import { BarChart, Bar, Rectangle, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
-
-const data = [
-  {
-    name: 'Page A',
-    uv: 4000,
-    pv: 2400,
-    amt: 2400,
-  },
-  {
-    name: 'Page B',
-    uv: 3000,
-    pv: 1398,
-    amt: 2210,
-  },
-  {
-    name: 'Page C',
-    uv: 2000,
-    pv: 9800,
-    amt: 2290,
-  },
-  {
-    name: 'Page D',
-    uv: 2780,
-    pv: 3908,
-    amt: 2000,
-  },
-  {
-    name: 'Page E',
-    uv: 1890,
-    pv: 4800,
-    amt: 2181,
-  },
-  {
-    name: 'Page F',
-    uv: 2390,
-    pv: 3800,
-    amt: 2500,
-  },
-  {
-    name: 'Page G',
-    uv: 3490,
-    pv: 4300,
-    amt: 2100,
-  },
-];
+import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
+import '../../assets/style/main.css';
 
 export default class BarChartSportSee extends PureComponent {
-  static demoUrl = 'https://codesandbox.io/p/sandbox/simple-bar-chart-72d7y5';
-
   render() {
+    const { data } = this.props; 
+
+    function CustomTooltip({ active, payload }) {
+      if (active && payload) {
+          return (
+              <div className="tooltipContainerBarChart">
+                  <p>{`${payload[0].value}Kg`}</p>
+                  <p>{`${payload[1].value}kCal`}</p>
+              </div>
+          );
+      }
+
+      return null;
+  }
+
     return (
       <ResponsiveContainer width="100%" height="100%">
         <BarChart
-          width={500}
-          height={300}
           data={data}
+          barGap={8}
           margin={{
-            top: 5,
-            right: 30,
-            left: 20,
-            bottom: 5,
+              top: 100,
+              right: 40,
+              left: 40,
+              bottom: 40,
           }}
-        >
-          <CartesianGrid strokeDasharray="3 3" />
-          <XAxis dataKey="name" />
-          <YAxis />
-          <Tooltip />
-          <Legend />
-          <Bar dataKey="pv" fill="#8884d8" activeBar={<Rectangle fill="pink" stroke="blue" />} />
-          <Bar dataKey="uv" fill="#82ca9d" activeBar={<Rectangle fill="gold" stroke="purple" />} />
+      >
+          <CartesianGrid
+            strokeDasharray="3 3"
+            vertical={false}
+          />
+          <XAxis
+            dataKey="day"
+            axisLine={true}
+            tickLine={false}
+            tick={{ fontSize: '14px', fontWeight: '500' }}
+            dy={15}
+          />
+          <YAxis
+            yAxisId="kilogram"
+            orientation="right"
+            tickCount={3}
+            axisLine={false}
+            tickLine={false}
+            tickMargin={30}
+            type="number"
+            tick={{ color: '9B9EAC', fontSize: '14px', fontWeight: '500' }}
+            domain={["dataMin - 1", "dataMax + 2"]}
+          />
+          <YAxis
+            yAxisId="calories"
+            hide={true}
+          />
+          <Bar
+            yAxisId="kilogram"
+            dataKey="kilogram"
+            fill="#282D30"
+            barSize={8}
+            legendType="circle"
+            name="Poids (Kg)"
+            unit="Kg"
+            radius={[20, 20, 0, 0]}
+          />
+          <Bar
+            yAxisId="calories"
+            dataKey="calories"
+            fill="#E60000"
+            barSize={8}
+            legendType="circle"
+            name="Calories brûlées (kCal)"
+            unit="Kcal"
+            radius={[20, 20, 0, 0]}
+          />
+          <Tooltip cursor={{ fill: "rgba(0, 0, 0, 0.1)" }} content={<CustomTooltip />} />
+          <Legend verticalAlign="top" align='right' iconSize={10} wrapperStyle={{ top: "2rem", right: 0 }} />          
         </BarChart>
       </ResponsiveContainer>
     );

@@ -17,6 +17,7 @@
     --yellow: #FDCC0C;
     --pink: #FD5181;
     --third-red: #FF0101B2;
+    --light-grey: #DEDEDE;
 }
 
 a{
@@ -145,6 +146,34 @@ main{
 .smallChart{
     width: 30%;    
 }
+.lineChart{
+    /* position: relative; */
+    background-color: var(--red);
+    border-radius: 8px;    
+}
+.tooltipContainerLineChart{
+  padding: 0.5rem;
+  font-size: 0.7rem;
+  font-weight: 500;
+  background: white;
+}
+.tooltipContainerBarChart{
+    display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: space-around;
+		padding: 16px;
+		height: 100px;
+		font-weight: 500;
+		font-size: 1rem;
+		background-color: var(--red);
+		color: var(--light-grey);
+}
+.radarChartBG{
+    border-radius: 8px;
+    background-color: var(--dark-grey);
+}
+
 .IconsContainer{
     display: flex;
     flex-direction: column;

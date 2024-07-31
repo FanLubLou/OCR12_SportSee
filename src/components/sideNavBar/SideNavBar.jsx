@@ -10,22 +10,22 @@ export default function sideNavBar() {
     <div className="sideNavBarContainer">
       <ul className="sideNavBarButtonContainer">
           <li>
-            <Link classname="sideNavBarButton">
+            <Link className="sideNavBarButton">
               <img src={yoga} alt="Yoga" />
             </Link>
           </li>
           <li>
-            <Link classname="sideNavBarButton">
+            <Link className="sideNavBarButton">
               <img src={swim} alt="swimmer" />
             </Link>
           </li>
           <li>
-            <Link classname="sideNavBarButton">
+            <Link className="sideNavBarButton">
               <img src={bike} alt="Bike" />
             </Link>
           </li>
           <li>
-            <Link classname="sideNavBarButton">
+            <Link className="sideNavBarButton">
               <img src={barbell} alt="barbell" />
             </Link>
           </li>
