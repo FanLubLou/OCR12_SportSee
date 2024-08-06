@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react';
-import { LineChart, Area, Line, XAxis, YAxis, Tooltip, ResponsiveContainer, AreaChart } from 'recharts';
+import { LineChart, Line, XAxis, YAxis, Tooltip, ResponsiveContainer} from 'recharts';
 
 export default class LineChartSportSee extends PureComponent {
   

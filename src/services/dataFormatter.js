@@ -48,13 +48,7 @@ export const formatUserAverageSessions = (data) => {
 };
 
 export const formatUserPerformanceData = (performanceData) => {
-    console.log("données reçues par formatUserPerformanceData :", performanceData);
-    
-    // Accédez à l'objet 'data' dans 'performanceData'
     const data = performanceData.data;
-
-    console.log("performanceData.data :", data);
-    
 
     if (!data || !data.data || !data.kind) {
         throw new Error("Invalid performance data format");
@@ -73,8 +67,6 @@ export const formatUserPerformanceData = (performanceData) => {
         value: item.value,
         kind: translate[item.kind],
     }));
-
-    console.log('translatedData :', translatedData)
 
     return translatedData;
 };

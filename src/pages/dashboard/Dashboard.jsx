@@ -13,25 +13,30 @@ export default function Dashboard() {
     const [activityData, setActivityData] = useState([]);
     const [averageSessionsData, setAverageSessionsData] = useState([]);
     const [performanceData, setPerformanceData] = useState([]);    
+    const [UserData, setUserData] = useState([]);    
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
 
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const [activityResponse, averageSessionsResponse, performanceResponse] = await Promise.all([
+                const [activityResponse, averageSessionsResponse, performanceResponse, UserDataResponse] = await Promise.all([
                     dataService.getUserActivity(userId),
                     dataService.getUserAverageSessions(userId),
-                    dataService.getUserPerformance(userId)
+                    dataService.getUserPerformance(userId),
+                    dataService.getUserData(userId),
+
                 ]);
             
-                console.log("Activity Response:", activityResponse);
-                console.log("Average Sessions Response:", averageSessionsResponse);
-                console.log("Performance Response:", performanceResponse);
+                console.log("Activity Response_dashBoard:", activityResponse);
+                console.log("Average Sessions Response_dashBoard:", averageSessionsResponse);
+                console.log("Performance Response_dashBoard:", performanceResponse);
+                console.log("UserData Response_dashBoard:", UserDataResponse);
                
                 setActivityData(activityResponse.data.sessions);
                 setAverageSessionsData(averageSessionsResponse.data.sessions);
                 setPerformanceData(performanceResponse);
+                setUserData(UserDataResponse);
 
                
 
@@ -49,8 +54,8 @@ export default function Dashboard() {
     if (loading) return <p>Loading...</p>;
     if (error) return <p>Error loading data de Dashboard: {error}</p>;
 
-    console.log('données Performance :', performanceData);
-
+    console.log('userData de mon Dashboard', UserData);
+        
     return (
         <div className="headerChartsAndIconContainer">
             <div className="header">
@@ -69,7 +74,7 @@ export default function Dashboard() {
                             <RadarChartSportSee data={performanceData} />
                         </div>
                         <div className="PieChart smallChart">
-                            <PieChartSportSee />
+                            <PieChartSportSee data={UserData} />
                         </div>
                     </div>
                 </div>

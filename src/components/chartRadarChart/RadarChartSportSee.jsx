@@ -6,7 +6,6 @@ export default class RadarSportSee extends PureComponent {
   render() {
     const { data } = this.props;  
 
-    console.log('données reçues dans radar',data)
     return (
       <ResponsiveContainer width="100%" height="100%" className='radarChartBG'>
         <RadarChart cx="50%" cy="50%" outerRadius="80%" data={data} margin={{ top: 0, right: 30, bottom: 0, left: 30 }} startAngle={30} endAngle={-330}>
