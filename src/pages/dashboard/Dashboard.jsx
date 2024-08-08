@@ -4,12 +4,17 @@ import BarChartSportSee from "../../components/chartBarChart/BarChartSportSee.js
 import RadarChartSportSee from "../../components/chartRadarChart/RadarChartSportSee.jsx";
 import PieChartSportSee from "../../components/chartPieChart/PieChartSportSee.jsx";
 import LineChartSportSee from "../../components/chartLineChart/LineChartSportSee.jsx";
-import Icon from "../../components/Icons/Icon.jsx";
+import Card from "../../components/Card/Card.jsx";
 import '../../assets/style/main.css';
 import dataService from "../../services/dataService.js";
+import calories from "../../assets/icons/calories-icon.png"
+import glucid from "../../assets/icons/glucid-icon.png"
+import lipid from "../../assets/icons/lipid-icon.png"
+import protein from "../../assets/icons/protein-icon.png"
+import { useParams } from "react-router-dom";
 
 export default function Dashboard() {
-    const userId = 12;  
+    const userId = useParams().id; 
     const [activityData, setActivityData] = useState([]);
     const [averageSessionsData, setAverageSessionsData] = useState([]);
     const [performanceData, setPerformanceData] = useState([]);    
@@ -59,7 +64,7 @@ export default function Dashboard() {
     return (
         <div className="headerChartsAndIconContainer">
             <div className="header">
-                <Header />
+                <Header value={UserData.data.userInfos.firstName} />
             </div>
             <div className="chartsAndIconsContainer">
                 <div className="chartsContainer">
@@ -78,11 +83,31 @@ export default function Dashboard() {
                         </div>
                     </div>
                 </div>
-                <div className="IconsContainer">
-                    <Icon className="Icon"/>
-                    <Icon className="Icon"/>
-                    <Icon className="Icon"/>
-                    <Icon className="Icon"/>
+                <div className="cardsContainer">
+                <Card
+                    value={UserData.data.keyData.calorieCount}
+                    title="Calories"
+                    img={calories}
+                    unit="kCal"
+                />
+                <Card
+                    value={UserData.data.keyData.proteinCount}
+                    title="Proteines"
+                    img={protein}
+                    unit="g"
+                />
+                <Card
+                    value={UserData.data.keyData.carbohydrateCount}
+                    title="Glucides"
+                    img={glucid}
+                    unit="g"
+                />
+                <Card
+                    value={UserData.data.keyData.lipidCount}
+                    title="Lipides"
+                    img={lipid}
+                    unit="g"
+                />
                 </div>
             </div>
         </div>

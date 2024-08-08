@@ -12,8 +12,8 @@ function App() {
         <SideNavBar />
         <div className="contentContainer">
           <Routes>
-            <Route path='/user/:id' element={<Home />} />
-            <Route path='/' element={<Dashboard />} />
+            <Route path='/' element={<Home />} />
+            <Route path='/user/:id' element={<Dashboard />} />
           </Routes>
         </div>
       </main>

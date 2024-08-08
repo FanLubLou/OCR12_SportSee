@@ -100,6 +100,37 @@ main{
     text-wrap: nowrap;
 }
 
+/****************************home************************/
+
+.homeProduction{
+    display: flex;
+    gap: 80px;
+    flex-direction: column;
+    color: var(--black);
+}
+
+
+.homeProductionLink{
+    display: flex;
+    gap: 160px;
+    font-size: clamp(1.8rem, 2vw, 2.4rem);
+
+}
+
+
+
+
+/*****************************header**********************/
+.headerBonjour{
+    font-size: clamp(2.4rem, 4vw, 4.8rem);
+}
+.headerSpan{
+    color: var(--red);
+
+}
+.headerP{
+    font-size: clamp(1.6rem, 1.8vw, 1.8rem);    
+}
 /********************************** contentContainer *********************************/
 .contentContainer{
     width: 80%;
@@ -134,7 +165,7 @@ main{
 }
 .largeChart{
     width: 100%;
-    height: 320px;
+    height: 450px;
     
 }
 .smallCharts{
@@ -147,7 +178,6 @@ main{
     width: 30%;    
 }
 .lineChart{
-    /* position: relative; */
     background-color: var(--red);
     border-radius: 8px;    
 }
@@ -173,10 +203,59 @@ main{
     border-radius: 8px;
     background-color: var(--dark-grey);
 }
+/********************************Card************************/
 
-.IconsContainer{
+.cardsContainer{
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     height: 100%;
 }
+
+
+.card{    
+    height: 124px;
+    border-radius: 5px;
+    background-color: #FBFBFB;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding-right: 18px;
+}
+.cardIcon{
+        width: 60px;
+        height: 60px;
+        border-radius: 6px;
+        margin-left: 32px;
+}
+.cardTitleValue{
+        display: flex;
+        flex-direction: column;
+        margin-left: 32px;
+    }
+.cardValue{
+        font-size: 20px;
+        color: #282D30;
+        margin-top: 12px;
+        margin-bottom: 0;
+}
+.cardTitle{
+        font-size: 14px;
+        color: #74798C;
+        margin-top: 5px;
+}
+
+/* 
+@media (min-width:1024px) and (max-width:1240px){
+    .card{
+        min-width: 200px;
+        max-width: 258px;
+    }    
+    .cardValue{
+            font-size: 16px;
+    }
+    .cardTitleValue{
+            margin-left: 16px;
+    }
+} */
+
