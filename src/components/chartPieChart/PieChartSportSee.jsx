@@ -5,20 +5,18 @@ const COLORS = ['#0088FE', '#00C49F'];
 
 export default class PieChartSportSee extends PureComponent {
   render() {
-    // Extraction de todayScore des props
+    
     const { data } = this.props;
-    const todayScore = data.data.todayScore || data.data.score;
+    const todayScore = data.todayScore || data.score;
     const COLORS = ['#FF0000', '#FFFFFF'];
 
-    console.log('todayScore reçu par mon composant: ', todayScore);
-
-    // Préparation des données pour le graphique
+    
     const scoreData = [
       { name: 'Score', value: todayScore },
       { name: 'Reste', value: 1 - todayScore }
     ];
 
-    console.log('scoreData dans mon composant: ', scoreData);
+    
 
     return (
       <ResponsiveContainer width="100%" height="100%" className="pieChart">

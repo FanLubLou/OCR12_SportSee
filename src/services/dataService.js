@@ -1,5 +1,6 @@
 import { formatUserActivityData, formatUserAverageSessions, formatUserPerformanceData } from './dataFormatter';
 
+
 const BASE_URL = 'http://localhost:3000/user';
 
 const dataService = {
@@ -23,13 +24,14 @@ const dataService = {
                 throw new Error('Network response was not ok');
             }
             const data = await response.json();
+            
             return formatUserActivityData(data);
         } catch (error) {
             console.error("Error fetching user activity:", error);
             throw error;
         }
     },
-
+    
     getUserAverageSessions: async (userId) => {
         try {
             const response = await fetch(`${BASE_URL}/${userId}/average-sessions`);
@@ -51,6 +53,7 @@ const dataService = {
                 throw new Error('Network response was not ok');
             }
             const data = await response.json();
+            console.log('unformartedPerformanceResponse :', data);
             return formatUserPerformanceData(data);
             
         } catch (error) {

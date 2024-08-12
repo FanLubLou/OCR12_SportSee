@@ -12,6 +12,10 @@ import glucid from "../../assets/icons/glucid-icon.png"
 import lipid from "../../assets/icons/lipid-icon.png"
 import protein from "../../assets/icons/protein-icon.png"
 import { useParams } from "react-router-dom";
+import { USER_MAIN_DATA, USER_ACTIVITY, USER_AVERAGE_SESSIONS, USER_PERFORMANCE } from '../../data/mockedData.js'
+import { formatMockedUserActivityData, formatMockedUserAverageSessions, formatMockedUserPerformanceData } from '../../services/dataFormatter.js';
+
+
 
 export default function Dashboard() {
     const userId = useParams().id; 
@@ -24,34 +28,68 @@ export default function Dashboard() {
 
     useEffect(() => {
         const fetchData = async () => {
-            try {
-                const [activityResponse, averageSessionsResponse, performanceResponse, UserDataResponse] = await Promise.all([
-                    dataService.getUserActivity(userId),
-                    dataService.getUserAverageSessions(userId),
-                    dataService.getUserPerformance(userId),
-                    dataService.getUserData(userId),
+            if (userId == 12 || userId == 18) {
+                try {
+                    const [activityResponse, averageSessionsResponse, performanceResponse, UserDataResponse] = await Promise.all([
+                            dataService.getUserActivity(userId),
+                            dataService.getUserAverageSessions(userId),
+                            dataService.getUserPerformance(userId),
+                            dataService.getUserData(userId),
+                            
+                        ]);
+                    
+                    // console.log("Activity Response_dashBoard:", activityResponse);
+                    // console.log("Average Sessions Response_dashBoard:", averageSessionsResponse);
+                    // console.log("Performance Response_dashBoard:", performanceResponse);
+                    // console.log("UserData Response_dashBoard:", UserDataResponse);                                                      
+                    
+                    setActivityData(activityResponse.data.sessions);
+                    setAverageSessionsData(averageSessionsResponse.data.sessions);
+                    setPerformanceData(performanceResponse);
+                    setUserData(UserDataResponse.data);
+                    
+                    setLoading(false);
+                } catch (error) {
+                    console.error("Error fetching data:", error);
+                    setError(error);
+                    setLoading(false);
+                }
+                
+            } else {
+                try {
+                    const [ mockedUserDataResponse, mockedUserActivity, mockedAverageSessions, mockedUserPerformance] = await Promise.all([
+                            USER_MAIN_DATA[3],
+                            USER_ACTIVITY[3],
+                            USER_AVERAGE_SESSIONS[3],
+                            USER_PERFORMANCE[3].data,
+                        ]);
+                    
+                    // console.log("mockedUserDataResponse:", mockedUserDataResponse);
+                    // console.log("mockedUserActivity:", mockedUserActivity);
+                    // console.log("mockedAverageSessions:", mockedAverageSessions);
+                    // console.log("mockedUserPerformance:", mockedUserPerformance);
 
-                ]);
-            
-                console.log("Activity Response_dashBoard:", activityResponse);
-                console.log("Average Sessions Response_dashBoard:", averageSessionsResponse);
-                console.log("Performance Response_dashBoard:", performanceResponse);
-                console.log("UserData Response_dashBoard:", UserDataResponse);
-               
-                setActivityData(activityResponse.data.sessions);
-                setAverageSessionsData(averageSessionsResponse.data.sessions);
-                setPerformanceData(performanceResponse);
-                setUserData(UserDataResponse);
+                    const formatedMockedUserActivity = formatMockedUserActivityData(mockedUserActivity);
+                    const formatedMockedAverageSessions = formatMockedUserAverageSessions(mockedAverageSessions);
+                    const formatedMockedPerformance = formatMockedUserPerformanceData(mockedUserPerformance);
 
-               
+                    console.log('formatedMockedPerformance :', formatedMockedPerformance);                   
+                  
+                    setActivityData(formatedMockedUserActivity.data.sessions);
+                    setAverageSessionsData(formatedMockedAverageSessions.data.sessions);
+                    setPerformanceData(formatedMockedPerformance);
+                    setUserData(mockedUserDataResponse);
+                    
+                    setLoading(false);
+                } catch (error) {
+                    console.error("Error fetching data:", error);
+                    setError(error);
+                    setLoading(false);
+                }
+                
 
-                setLoading(false);
-            } catch (error) {
-                console.error("Error fetching data:", error);
-                setError(error);
-                setLoading(false);
-            }
-        };
+            };
+        };    
 
         fetchData();
     }, [userId]); 
@@ -59,12 +97,12 @@ export default function Dashboard() {
     if (loading) return <p>Loading...</p>;
     if (error) return <p>Error loading data de Dashboard: {error}</p>;
 
-    console.log('userData de mon Dashboard', UserData);
+    
         
     return (
         <div className="headerChartsAndIconContainer">
             <div className="header">
-                <Header value={UserData.data.userInfos.firstName} />
+                <Header value={UserData.userInfos.firstName} />
             </div>
             <div className="chartsAndIconsContainer">
                 <div className="chartsContainer">
@@ -85,25 +123,25 @@ export default function Dashboard() {
                 </div>
                 <div className="cardsContainer">
                 <Card
-                    value={UserData.data.keyData.calorieCount}
+                    value={UserData.keyData.calorieCount}
                     title="Calories"
                     img={calories}
                     unit="kCal"
                 />
                 <Card
-                    value={UserData.data.keyData.proteinCount}
+                    value={UserData.keyData.proteinCount}
                     title="Proteines"
                     img={protein}
                     unit="g"
                 />
                 <Card
-                    value={UserData.data.keyData.carbohydrateCount}
+                    value={UserData.keyData.carbohydrateCount}
                     title="Glucides"
                     img={glucid}
                     unit="g"
                 />
                 <Card
-                    value={UserData.data.keyData.lipidCount}
+                    value={UserData.keyData.lipidCount}
                     title="Lipides"
                     img={lipid}
                     unit="g"
