@@ -55,13 +55,13 @@ export default function Dashboard() {
                     setLoading(false);
                 }
                 
-            } else {
+            } else if ((userId == 1 || userId == 2 || userId == 3 || userId == 4 || userId == 5 || userId == 6 )){
                 try {
                     const [ mockedUserDataResponse, mockedUserActivity, mockedAverageSessions, mockedUserPerformance] = await Promise.all([
-                            USER_MAIN_DATA[3],
-                            USER_ACTIVITY[3],
-                            USER_AVERAGE_SESSIONS[3],
-                            USER_PERFORMANCE[3].data,
+                            USER_MAIN_DATA[userId-1],
+                            USER_ACTIVITY[userId-1],
+                            USER_AVERAGE_SESSIONS[userId-1],
+                            USER_PERFORMANCE[userId-1].data,
                         ]);
                     
                     // console.log("mockedUserDataResponse:", mockedUserDataResponse);
