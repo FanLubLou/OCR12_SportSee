@@ -1,5 +1,11 @@
 import { Link } from "react-router-dom"
 
+/**
+ * ${1:Description placeholder}
+ *
+ * @export
+ * @returns {${2:*}}
+ */
 export default function Error() {
     return (        
         <div className='wrapperError'>

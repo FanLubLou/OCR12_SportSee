@@ -1,9 +1,22 @@
 import React, { PureComponent } from 'react';
 import { LineChart, Line, XAxis, YAxis, Tooltip, ResponsiveContainer} from 'recharts';
 
+/**
+ * ${1:Description placeholder}
+ *
+ * @export
+ * @class LineChartSportSee
+ * @typedef {LineChartSportSee}
+ * @extends {PureComponent}
+ */
 export default class LineChartSportSee extends PureComponent {
   
-  render() {
+  /**
+ * ${1:Description placeholder}
+ *
+ * @returns {${2:*}}
+ */
+render() {
     const { data } = this.props;
 
     function CustomTooltip({ active, payload }) {

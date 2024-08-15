@@ -1,6 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
+/**
+ * ${1:Description placeholder}
+ *
+ * @export
+ * @returns {${2:*}}
+ */
 export default function home() {
   return (
     <div className='homeProduction'>

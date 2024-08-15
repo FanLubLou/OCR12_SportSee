@@ -1,9 +1,22 @@
 import React, { PureComponent } from 'react';
 import { Radar, RadarChart, PolarGrid, PolarAngleAxis, ResponsiveContainer } from 'recharts';
 
+/**
+ * ${1:Description placeholder}
+ *
+ * @export
+ * @class RadarSportSee
+ * @typedef {RadarSportSee}
+ * @extends {PureComponent}
+ */
 export default class RadarSportSee extends PureComponent {
   
-  render() {
+  /**
+ * ${1:Description placeholder}
+ *
+ * @returns {${2:*}}
+ */
+render() {
     const { data } = this.props;  
 
     return (

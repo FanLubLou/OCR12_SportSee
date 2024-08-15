@@ -1,10 +1,28 @@
 import React, { PureComponent } from 'react';
 import { PieChart, Pie, Cell, ResponsiveContainer } from 'recharts';
 
+/**
+ * ${1:Description placeholder}
+ *
+ * @type {{}\}
+ */
 const COLORS = ['#0088FE', '#00C49F'];
 
+/**
+ * ${1:Description placeholder}
+ *
+ * @export
+ * @class PieChartSportSee
+ * @typedef {PieChartSportSee}
+ * @extends {PureComponent}
+ */
 export default class PieChartSportSee extends PureComponent {
-  render() {
+  /**
+ * ${1:Description placeholder}
+ *
+ * @returns {${2:*}}
+ */
+render() {
     
     const { data } = this.props;
     const todayScore = data.todayScore || data.score;

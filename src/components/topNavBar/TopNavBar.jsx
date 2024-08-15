@@ -2,6 +2,12 @@ import logo from "../../assets/icons/logo.png";
 import '../../assets/style/main.css';
 import {Link} from 'react-router-dom'
 
+/**
+ * ${1:Description placeholder}
+ *
+ * @export
+ * @returns {${2:*}}
+ */
 export default function topNavBar() {
   return (
       <div className="topNavBarContainer">

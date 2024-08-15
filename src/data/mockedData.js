@@ -1,3 +1,8 @@
+/**
+ * ${1:Description placeholder}
+ *
+ * @type {{}\}
+ */
 export const USER_MAIN_DATA = [
     {
       id: 1,
@@ -92,7 +97,12 @@ export const USER_MAIN_DATA = [
     
   ];
   
-  export const USER_ACTIVITY = [
+  /**
+ * ${1:Description placeholder}
+ *
+ * @type {{}\}
+ */
+export const USER_ACTIVITY = [
     {
       userId: 1,
       sessions: [
@@ -336,7 +346,12 @@ export const USER_MAIN_DATA = [
       },
   ];
   
-  export const USER_AVERAGE_SESSIONS = [
+  /**
+ * ${1:Description placeholder}
+ *
+ * @type {{}\}
+ */
+export const USER_AVERAGE_SESSIONS = [
     {
       userId: 1,
       sessions: [
@@ -537,7 +552,12 @@ export const USER_MAIN_DATA = [
       },
   ];
   
-  export const USER_PERFORMANCE = [
+  /**
+ * ${1:Description placeholder}
+ *
+ * @type {{}\}
+ */
+export const USER_PERFORMANCE = [
     {
       userId: 1,
       kind: {

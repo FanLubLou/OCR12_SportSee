@@ -1,8 +1,18 @@
 import { formatUserActivityData, formatUserAverageSessions, formatUserPerformanceData } from './dataFormatter';
 
 
+/**
+ * ${1:Description placeholder}
+ *
+ * @type {"http://localhost:3000/user"}
+ */
 const BASE_URL = 'http://localhost:3000/user';
 
+/**
+ * ${1:Description placeholder}
+ *
+ * @type {{ getUserData: (userId: any) => unknown; getUserActivity: (userId: any) => unknown; getUserAverageSessions: (userId: any) => unknown; getUserPerformance: (userId: any) => unknown; }\}
+ */
 const dataService = {
     getUserData: async (userId) => {
         try {

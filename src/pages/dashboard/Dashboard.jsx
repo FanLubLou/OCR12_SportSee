@@ -17,6 +17,12 @@ import { formatMockedUserActivityData, formatMockedUserAverageSessions, formatMo
 
 
 
+/**
+ * ${1:Description placeholder}
+ *
+ * @export
+ * @returns {${2:*}}
+ */
 export default function Dashboard() {
     const userId = useParams().id; 
     const [activityData, setActivityData] = useState([]);

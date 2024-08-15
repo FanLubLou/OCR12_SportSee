@@ -2,14 +2,22 @@ import React, { PureComponent } from 'react';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 import '../../assets/style/main.css';
 
+
 /**
- * @class
- * @classdesc Chart class component, renders a chart
+ * ${1:Description placeholder}
+ *
+ * @export
+ * @class BarChartSportSee
+ * @typedef {BarChartSportSee}
+ * @extends {PureComponent}
  */
-
-
 export default class BarChartSportSee extends PureComponent {
-  render() {
+  /**
+ * ${1:Description placeholder}
+ *
+ * @returns {${2:*}}
+ */
+render() {
     const { data } = this.props; 
 
     function CustomTooltip({ active, payload }) {

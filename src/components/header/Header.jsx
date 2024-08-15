@@ -1,5 +1,13 @@
 import React from 'react'
 
+/**
+ * ${1:Description placeholder}
+ *
+ * @export
+ * @param {{ value: any; }} param0
+ * @param {${2:*}} param0.value
+ * @returns {${3:*}\}
+ */
 export default function header({ value }) {
   
    return (

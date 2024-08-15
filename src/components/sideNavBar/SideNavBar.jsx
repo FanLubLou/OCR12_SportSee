@@ -5,6 +5,12 @@ import barbell from "../../assets/icons/barbell.png";
 import { Link } from "react-router-dom";
 
 
+/**
+ * ${1:Description placeholder}
+ *
+ * @export
+ * @returns {${2:*}}
+ */
 export default function sideNavBar() {
   return (
     <div className="sideNavBarContainer">

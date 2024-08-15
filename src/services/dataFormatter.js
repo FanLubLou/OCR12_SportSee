@@ -1,3 +1,9 @@
+/**
+ * ${1:Description placeholder}
+ *
+ * @param {${2:*}} data
+ * @returns {${3:*}}
+ */
 export const formatUserActivityData = (data) => {
     if (!data || !data.data || !data.data.sessions) {
         throw new Error('Invalid data format');
@@ -20,6 +26,12 @@ export const formatUserActivityData = (data) => {
     };
 };
 
+/**
+ * ${1:Description placeholder}
+ *
+ * @param {${2:*}} data
+ * @returns {{ data: any; }\}
+ */
 export const formatMockedUserActivityData = (data) => {
     // if (!data || !data.data || !data.data.sessions) {
     //     throw new Error('Invalid data format');
@@ -42,6 +54,12 @@ export const formatMockedUserActivityData = (data) => {
     };
 };
 
+/**
+ * ${1:Description placeholder}
+ *
+ * @param {${2:*}} data
+ * @returns {${3:*}}
+ */
 export const formatUserAverageSessions = (data) => {
     if (!data || !data.data || !data.data.sessions || !Array.isArray(data.data.sessions)) {
         throw new Error('Invalid data format');
@@ -69,6 +87,12 @@ export const formatUserAverageSessions = (data) => {
     };
 };
 
+/**
+ * ${1:Description placeholder}
+ *
+ * @param {${2:*}} data
+ * @returns {{ data: any; }\}
+ */
 export const formatMockedUserAverageSessions = (data) => {
     // if (!data || !data.data || !data.data.sessions || !Array.isArray(data.data.sessions)) {
     //     throw new Error('Invalid data format');
@@ -96,6 +120,12 @@ export const formatMockedUserAverageSessions = (data) => {
     };
 };
 
+/**
+ * ${1:Description placeholder}
+ *
+ * @param {${2:*}} performanceData
+ * @returns {${3:*}}
+ */
 export const formatUserPerformanceData = (performanceData) => {
     const data = performanceData.data;
 
@@ -120,6 +150,12 @@ export const formatUserPerformanceData = (performanceData) => {
     return translatedData;
 };
 
+/**
+ * ${1:Description placeholder}
+ *
+ * @param {${2:*}} data
+ * @returns {${3:*}}
+ */
 export const formatMockedUserPerformanceData = (data) => {
     // const data = performanceData.data;
 
