@@ -13,17 +13,17 @@ export default function topNavBar() {
             </Link>
           </li>
           <li>
-            <Link className="topNavBarButton" to='/'>
+            <Link className="topNavBarButton">
                 Profil
             </Link>
           </li>
           <li>
-              <Link className="topNavBarButton" to='/'>
+              <Link className="topNavBarButton">
                 Réglages
               </Link>
           </li>
           <li >
-            <Link className="topNavBarButton" to='/'>
+            <Link className="topNavBarButton">
                 Communauté
             </Link>
           </li>

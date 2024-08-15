@@ -1,3 +1,37 @@
+
+# Formation Développeur d'application - JavaScript React
+
+## 📎 Projet 12 : Sportsee - Développez un tableau de bord d'analytics avec React.
+
+## Technologies :
+
+- React
+- CSS
+- Recharts
+
+
+### Backend : Install and Launch
+
+1. Clone the backend repository : `git clone https://github.com/OpenClassrooms-Student-Center/P9-front-end-dashboard`
+
+2. Place yourself into the cloned folder, then install dependencies :
+`npm install`
+
+3. Launch backend server (port 3000) : 
+`yarn dev`
+
+### Frontend : Install and Launch
+
+1. Clone the frontend repository: `git clone https://github.com/FanLubLou/OCR12_SportSee.git`
+
+2. Place yourself into the cloned folder, then install dependencies :
+`npm install`
+
+3. Launch backend server (port 3001) : 
+`npm start`
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
@@ -9,7 +43,7 @@ In the project directory, you can run:
 ### `npm start`
 
 Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Open [http://localhost:3001](http://localhost:3001) to view it in your browser.
 
 The page will reload when you make changes.\
 You may also see any lint errors in the console.
@@ -68,3 +102,15 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+
+### Development Data / Production Data
+
+- Backend API provides data for users 12 and 18, 
+- Users 1 to 6 Data are provided from a mocked data folder. To be the data consistent, Users' data from 1 to 3 are a copy of user 12 Data and Users'data from 4 to 6 are a copy of user 18 Data. 
+
+
+### Demo page
+
+https://sportseebyjc.netlify.app/
+Only the development data will work.

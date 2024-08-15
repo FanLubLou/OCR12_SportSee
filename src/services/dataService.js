@@ -53,7 +53,6 @@ const dataService = {
                 throw new Error('Network response was not ok');
             }
             const data = await response.json();
-            console.log('unformartedPerformanceResponse :', data);
             return formatUserPerformanceData(data);
             
         } catch (error) {

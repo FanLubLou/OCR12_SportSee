@@ -2,6 +2,12 @@ import React, { PureComponent } from 'react';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 import '../../assets/style/main.css';
 
+/**
+ * @class
+ * @classdesc Chart class component, renders a chart
+ */
+
+
 export default class BarChartSportSee extends PureComponent {
   render() {
     const { data } = this.props; 

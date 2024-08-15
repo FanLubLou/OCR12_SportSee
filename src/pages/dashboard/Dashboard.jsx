@@ -64,16 +64,9 @@ export default function Dashboard() {
                             USER_PERFORMANCE[userId-1].data,
                         ]);
                     
-                    // console.log("mockedUserDataResponse:", mockedUserDataResponse);
-                    // console.log("mockedUserActivity:", mockedUserActivity);
-                    // console.log("mockedAverageSessions:", mockedAverageSessions);
-                    // console.log("mockedUserPerformance:", mockedUserPerformance);
-
                     const formatedMockedUserActivity = formatMockedUserActivityData(mockedUserActivity);
                     const formatedMockedAverageSessions = formatMockedUserAverageSessions(mockedAverageSessions);
-                    const formatedMockedPerformance = formatMockedUserPerformanceData(mockedUserPerformance);
-
-                    console.log('formatedMockedPerformance :', formatedMockedPerformance);                   
+                    const formatedMockedPerformance = formatMockedUserPerformanceData(mockedUserPerformance);                                 
                   
                     setActivityData(formatedMockedUserActivity.data.sessions);
                     setAverageSessionsData(formatedMockedAverageSessions.data.sessions);

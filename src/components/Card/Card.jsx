@@ -1,5 +1,10 @@
 export default function Card({ value, title, img, unit }) {
 
+  /**
+ * Creates a card
+ * @param { String, string, image, string } props 
+ * @returns { HTMLElement } returns a card
+ */
   
   return (
     <div className='card'>
