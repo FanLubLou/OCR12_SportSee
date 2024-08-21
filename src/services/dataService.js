@@ -35,7 +35,7 @@ const dataService = {
             }
             const data = await response.json();
             
-            return formatUserActivityData(data);
+            return formatUserActivityData(data.data);
         } catch (error) {
             console.error("Error fetching user activity:", error);
             throw error;
@@ -49,7 +49,7 @@ const dataService = {
                 throw new Error('Network response was not ok');
             }
             const data = await response.json();
-            return formatUserAverageSessions(data);
+            return formatUserAverageSessions(data.data);
         } catch (error) {
             console.error("Error fetching user average sessions:", error);
             throw error;
@@ -63,7 +63,7 @@ const dataService = {
                 throw new Error('Network response was not ok');
             }
             const data = await response.json();
-            return formatUserPerformanceData(data);
+            return formatUserPerformanceData(data.data.data);
             
         } catch (error) {
             console.error("Error fetching user performance:", error);

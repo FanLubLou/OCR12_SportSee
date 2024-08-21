@@ -13,7 +13,7 @@ import lipid from "../../assets/icons/lipid-icon.png"
 import protein from "../../assets/icons/protein-icon.png"
 import { useParams } from "react-router-dom";
 import { USER_MAIN_DATA, USER_ACTIVITY, USER_AVERAGE_SESSIONS, USER_PERFORMANCE } from '../../data/mockedData.js'
-import { formatMockedUserActivityData, formatMockedUserAverageSessions, formatMockedUserPerformanceData } from '../../services/dataFormatter.js';
+import { formatUserActivityData, formatUserAverageSessions, formatUserPerformanceData } from '../../services/dataFormatter.js';
 
 
 
@@ -70,9 +70,9 @@ export default function Dashboard() {
                             USER_PERFORMANCE[userId-1].data,
                         ]);
                     
-                    const formatedMockedUserActivity = formatMockedUserActivityData(mockedUserActivity);
-                    const formatedMockedAverageSessions = formatMockedUserAverageSessions(mockedAverageSessions);
-                    const formatedMockedPerformance = formatMockedUserPerformanceData(mockedUserPerformance);                                 
+                    const formatedMockedUserActivity = formatUserActivityData(mockedUserActivity);
+                    const formatedMockedAverageSessions = formatUserAverageSessions(mockedAverageSessions);
+                    const formatedMockedPerformance = formatUserPerformanceData(mockedUserPerformance);                                 
                   
                     setActivityData(formatedMockedUserActivity.data.sessions);
                     setAverageSessionsData(formatedMockedAverageSessions.data.sessions);
@@ -86,7 +86,6 @@ export default function Dashboard() {
                     setLoading(false);
                 }
                 
-
             };
         };    
 
