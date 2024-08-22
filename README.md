@@ -48,6 +48,13 @@ Open [http://localhost:3001](http://localhost:3001) to view it in your browser.
 The page will reload when you make changes.\
 You may also see any lint errors in the console.
 
+By default, the project is configured to run on port `3001`. This is defined in the `start` script within the `package.json` file:
+
+```json
+"scripts": {
+  "start": "PORT=3001 react-scripts start"
+}
+
 ### `npm test`
 
 Launches the test runner in the interactive watch mode.\

@@ -44,7 +44,7 @@ export default function Dashboard() {
                             
                         ]);
                     
-                    // console.log("Activity Response_dashBoard:", activityResponse);
+                    console.log("Activity Response_dashBoard:", activityResponse);
                     // console.log("Average Sessions Response_dashBoard:", averageSessionsResponse);
                     // console.log("Performance Response_dashBoard:", performanceResponse);
                     // console.log("UserData Response_dashBoard:", UserDataResponse);                                                      
