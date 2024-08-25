@@ -18,7 +18,7 @@ export const formatUserActivityData = (data) => {
     });
 
     return {
-        // ...data,
+        
         data: {
             ...data.data,
             sessions: formattedSessions
@@ -52,7 +52,7 @@ export const formatUserAverageSessions = (data) => {
     });
 
     return {
-        // ...data,
+        
         data: {
             ...data.data,
             sessions: formattedSessions
@@ -67,7 +67,7 @@ export const formatUserAverageSessions = (data) => {
  * @returns {${3:*}}
  */
 export const formatUserPerformanceData = (data) => {
-    // const data = performanceData.data;
+   
 
     // if (!data || !data.data || !data.kind) {
     //     throw new Error("Invalid performance data format");

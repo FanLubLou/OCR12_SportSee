@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useParams, useNavigate } from "react-router-dom";
 import Header from "../../components/header/Header.jsx";
 import BarChartSportSee from "../../components/chartBarChart/BarChartSportSee.jsx";
 import RadarChartSportSee from "../../components/chartRadarChart/RadarChartSportSee.jsx";
@@ -7,100 +8,93 @@ import LineChartSportSee from "../../components/chartLineChart/LineChartSportSee
 import Card from "../../components/Card/Card.jsx";
 import '../../assets/style/main.css';
 import dataService from "../../services/dataService.js";
-import calories from "../../assets/icons/calories-icon.png"
-import glucid from "../../assets/icons/glucid-icon.png"
-import lipid from "../../assets/icons/lipid-icon.png"
-import protein from "../../assets/icons/protein-icon.png"
-import { useParams } from "react-router-dom";
-import { USER_MAIN_DATA, USER_ACTIVITY, USER_AVERAGE_SESSIONS, USER_PERFORMANCE } from '../../data/mockedData.js'
+import calories from "../../assets/icons/calories-icon.png";
+import glucid from "../../assets/icons/glucid-icon.png";
+import lipid from "../../assets/icons/lipid-icon.png";
+import protein from "../../assets/icons/protein-icon.png";
+import { USER_MAIN_DATA, USER_ACTIVITY, USER_AVERAGE_SESSIONS, USER_PERFORMANCE } from '../../data/mockedData.js';
 import { formatUserActivityData, formatUserAverageSessions, formatUserPerformanceData } from '../../services/dataFormatter.js';
 
-
-
 /**
- * ${1:Description placeholder}
+ * Composant Dashboard qui affiche les données utilisateur sous forme de graphiques et de cartes.
  *
  * @export
- * @returns {${2:*}}
+ * @returns {JSX.Element} Le composant Dashboard.
  */
 export default function Dashboard() {
-    const userId = useParams().id; 
+    const { id } = useParams(); 
+    const navigate = useNavigate(); 
+    const userId = parseInt(id); 
+
+    
     const [activityData, setActivityData] = useState([]);
     const [averageSessionsData, setAverageSessionsData] = useState([]);
     const [performanceData, setPerformanceData] = useState([]);    
-    const [UserData, setUserData] = useState([]);    
+    const [userData, setUserData] = useState([]);    
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
 
+    /**
+     * Fonction pour récupérer les données utilisateur à partir de l'API ou des données mockées.
+     *
+     * @async
+     */
     useEffect(() => {
         const fetchData = async () => {
-            if (userId == 12 || userId == 18) {
-                try {
-                    const [activityResponse, averageSessionsResponse, performanceResponse, UserDataResponse] = await Promise.all([
-                            dataService.getUserActivity(userId),
-                            dataService.getUserAverageSessions(userId),
-                            dataService.getUserPerformance(userId),
-                            dataService.getUserData(userId),
-                            
-                        ]);
+            try {
+                if ([12, 18].includes(userId)) {
                     
-                    console.log("Activity Response_dashBoard:", activityResponse);
-                    // console.log("Average Sessions Response_dashBoard:", averageSessionsResponse);
-                    // console.log("Performance Response_dashBoard:", performanceResponse);
-                    // console.log("UserData Response_dashBoard:", UserDataResponse);                                                      
-                    
+                    const [activityResponse, averageSessionsResponse, performanceResponse, userDataResponse] = await Promise.all([
+                        dataService.getUserActivity(userId),
+                        dataService.getUserAverageSessions(userId),
+                        dataService.getUserPerformance(userId),
+                        dataService.getUserData(userId),
+                    ]);
+
                     setActivityData(activityResponse.data.sessions);
                     setAverageSessionsData(averageSessionsResponse.data.sessions);
                     setPerformanceData(performanceResponse);
-                    setUserData(UserDataResponse.data);
+                    setUserData(userDataResponse.data);
+                } else if ([1, 2, 3, 4, 5, 6].includes(userId)) {
                     
-                    setLoading(false);
-                } catch (error) {
-                    console.error("Error fetching data:", error);
-                    setError(error);
-                    setLoading(false);
-                }
-                
-            } else if ((userId == 1 || userId == 2 || userId == 3 || userId == 4 || userId == 5 || userId == 6 )){
-                try {
-                    const [ mockedUserDataResponse, mockedUserActivity, mockedAverageSessions, mockedUserPerformance] = await Promise.all([
-                            USER_MAIN_DATA[userId-1],
-                            USER_ACTIVITY[userId-1],
-                            USER_AVERAGE_SESSIONS[userId-1],
-                            USER_PERFORMANCE[userId-1].data,
-                        ]);
-                    
-                    const formatedMockedUserActivity = formatUserActivityData(mockedUserActivity);
-                    const formatedMockedAverageSessions = formatUserAverageSessions(mockedAverageSessions);
-                    const formatedMockedPerformance = formatUserPerformanceData(mockedUserPerformance);                                 
-                  
-                    setActivityData(formatedMockedUserActivity.data.sessions);
-                    setAverageSessionsData(formatedMockedAverageSessions.data.sessions);
-                    setPerformanceData(formatedMockedPerformance);
+                    const mockedUserDataResponse = USER_MAIN_DATA[userId - 1];
+                    const mockedUserActivity = formatUserActivityData(USER_ACTIVITY[userId - 1]);
+                    const mockedAverageSessions = formatUserAverageSessions(USER_AVERAGE_SESSIONS[userId - 1]);
+                    const mockedUserPerformance = formatUserPerformanceData(USER_PERFORMANCE[userId - 1].data);
+
+                    setActivityData(mockedUserActivity.data.sessions);
+                    setAverageSessionsData(mockedAverageSessions.data.sessions);
+                    setPerformanceData(mockedUserPerformance);
                     setUserData(mockedUserDataResponse);
+                } else {
                     
-                    setLoading(false);
-                } catch (error) {
-                    console.error("Error fetching data:", error);
-                    setError(error);
-                    setLoading(false);
+                    throw new Error("Utilisateur non trouvé");
                 }
-                
-            };
-        };    
+            } catch (error) {
+                console.error("Error fetching data:", error);
+                setError(error);
+                navigate("/Error"); 
+            } finally {
+                setLoading(false);
+            }
+        };
 
         fetchData();
-    }, [userId]); 
+    }, [userId, navigate]); 
 
     if (loading) return <p>Loading...</p>;
-    if (error) return <p>Error loading data de Dashboard: {error}</p>;
-
     
-        
+if (error) return (
+        <div className="error-message">
+            <h2>Une erreur s'est produite lors du chargement des données</h2>
+            <p>{error.message || "Une erreur inconnue s'est produite."}</p>
+        </div>
+    );
+
     return (
         <div className="headerChartsAndIconContainer">
             <div className="header">
-                <Header value={UserData.userInfos.firstName} />
+                <Header value={userData.userInfos?.firstName} />
             </div>
             <div className="chartsAndIconsContainer">
                 <div className="chartsContainer">
@@ -115,37 +109,17 @@ export default function Dashboard() {
                             <RadarChartSportSee data={performanceData} />
                         </div>
                         <div className="PieChart smallChart">
-                            <PieChartSportSee data={UserData} />
+                            <PieChartSportSee data={userData} />
                         </div>
                     </div>
                 </div>
                 <div className="cardsContainer">
-                <Card
-                    value={UserData.keyData.calorieCount}
-                    title="Calories"
-                    img={calories}
-                    unit="kCal"
-                />
-                <Card
-                    value={UserData.keyData.proteinCount}
-                    title="Proteines"
-                    img={protein}
-                    unit="g"
-                />
-                <Card
-                    value={UserData.keyData.carbohydrateCount}
-                    title="Glucides"
-                    img={glucid}
-                    unit="g"
-                />
-                <Card
-                    value={UserData.keyData.lipidCount}
-                    title="Lipides"
-                    img={lipid}
-                    unit="g"
-                />
+                    <Card value={userData.keyData?.calorieCount} title="Calories" img={calories} unit="kCal" />
+                    <Card value={userData.keyData?.proteinCount} title="Proteines" img={protein} unit="g" />
+                    <Card value={userData.keyData?.carbohydrateCount} title="Glucides" img={glucid} unit="g" />
+                    <Card value={userData.keyData?.lipidCount} title="Lipides" img={lipid} unit="g" />
                 </div>
             </div>
         </div>
-    )
+    );
 }

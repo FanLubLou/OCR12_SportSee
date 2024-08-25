@@ -253,8 +253,7 @@ main{
     align-items: center;
     min-height: 620px;
     color: var(--red);
-    width: 86%;
-    margin: 0 auto;
+      
 }        
 .Error404{
     font-size: clamp(96px, 23vw, 288px);        
@@ -270,3 +269,22 @@ main{
     text-decoration: underline;
     font-weight: 500;
 }
+.error-message{
+    max-width: 85%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    min-height: 620px;
+    color: var(--red);
+     
+}
+
+.error-message h2{
+    font-size: clamp(20px, 12vw,40px);
+ }
+ .error-message p{ 
+    font-size: clamp(15px, 10vw,30px);
+}
+
