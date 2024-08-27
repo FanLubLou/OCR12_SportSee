@@ -4,7 +4,7 @@ import TopNavBar from "./components/topNavBar/TopNavBar.jsx";
 import Home from "./pages/home/Home.jsx";
 import Error from "./pages/Error/Error.jsx";
 import Dashboard from "./pages/dashboard/Dashboard.jsx";
-import DataProvider from './services/dataProvider.jsx';
+import DataProvider from './services/dataProvider.js';
 
 /**
  * ${1:Description placeholder}
