@@ -50,10 +50,10 @@ You may also see any lint errors in the console.
 
 By default, the project is configured to run on port `3001`. This is defined in the `start` script within the `package.json` file:
 
-```json
+`json
 "scripts": {
   "start": "PORT=3001 react-scripts start"
-}
+}`
 
 ### `npm test`
 
@@ -88,7 +88,7 @@ To learn React, check out the [React documentation](https://reactjs.org/).
 
 ### Code Splitting
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting).
 
 ### Analyzing the Bundle Size
 
@@ -116,6 +116,24 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 - Backend API provides data for users 12 and 18, 
 - Users 1 to 6 Data are provided from a mocked data folder. To be the data consistent, Users' data from 1 to 3 are a copy of user 12 Data and Users'data from 4 to 6 are a copy of user 18 Data. 
 
+### EndPoints
+
+#### EndPoints provided by the backend
+
+This project includes four endpoints directly from the backend that you will be able to use: 
+
+- `http://localhost:3000/user/${userId}` - retrieves information from a user. This first endpoint includes the user id, user information (first name, last name and age), the current day's score (todayScore) and key data (calorie, macronutrient, etc.).
+- `http://localhost:3000/user/${userId}/activity` - retrieves a user's activity day by day with kilograms and calories.
+- `http://localhost:3000/user/${userId}/average-sessions` - retrieves the average sessions of a user per day. The week starts on Monday.
+- `http://localhost:3000/user/${userId}/performance` - retrieves a user's performance (energy, endurance, etc.).
+
+#### EndPoints provided by the app
+- `/user/:id/activity`
+- retrieves a user's activity day by day with kilograms and calories.
+- `/user/:id/performance` 
+- retrieves a user's performance (energy, endurance, etc.).
+- `/user/:id/average-sessions`
+- retrieves the average sessions of a user per day.
 
 ### Demo page
 
