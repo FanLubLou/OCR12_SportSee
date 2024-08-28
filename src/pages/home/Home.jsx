@@ -2,10 +2,13 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 /**
- * ${1:Description placeholder}
+ * Composant de la page d'accueil.
+ *
+ * Ce composant rend une page d'accueil avec des liens vers différents utilisateurs. 
+ * Il sépare les liens en deux sections : "Production" pour les utilisateurs réels et "Développement" pour les utilisateurs de test.
  *
  * @export
- * @returns {${2:*}}
+ * @returns {JSX.Element} La structure JSX de la page d'accueil.
  */
 export default function home() {
   return (
@@ -23,9 +26,7 @@ export default function home() {
         <Link to="/user/4">Utilisateur 4</Link> 
         <Link to="/user/5">Utilisateur 5</Link> 
         <Link to="/user/6">Utilisateur 6</Link> 
-        
       </div>
     </div>
-
-  )
+  );
 }

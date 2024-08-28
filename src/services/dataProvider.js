@@ -5,11 +5,15 @@ import { USER_ACTIVITY, USER_AVERAGE_SESSIONS, USER_PERFORMANCE } from '../data/
 import { formatUserActivityData, formatUserAverageSessions, formatUserPerformanceData } from './dataFormatter';
 
 /**
- * ${1:Description placeholder}
+ * Composant DataProvider.
+ * 
+ * Ce composant est responsable de fournir les données utilisateur en fonction du type de données requis (`dataType`).
+ * Les données sont soit récupérées à partir du backend, soit extraites des données mockées.
+ * Le composant gère également les états de chargement et d'erreur lors de la récupération des données.
  *
- * @param {{ dataType: any; }} param0
- * @param {${2:*}} param0.dataType
- * @returns {${3:*}\}
+ * @param {{ dataType: string }} param0 - Les propriétés du composant.
+ * @param {string} param0.dataType - Le type de données à récupérer ("average-sessions", "performance", ou "activity").
+ * @returns {JSX.Element} Un élément JSX qui affiche les données formatées ou un message de chargement/d'erreur.
  */
 function DataProvider({ dataType }) {
     const { id } = useParams();
@@ -23,6 +27,8 @@ function DataProvider({ dataType }) {
         const fetchData = async () => {
             try {
                 let fetchedData;
+                
+                // Vérifie si l'utilisateur est dans la liste des utilisateurs mockés
                 if ([1, 2, 3, 4, 5, 6].includes(userId)) {
                     switch (dataType) {
                         case 'average-sessions':

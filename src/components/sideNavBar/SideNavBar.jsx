@@ -4,14 +4,14 @@ import bike from "../../assets/icons/bike.png";
 import barbell from "../../assets/icons/barbell.png";
 import { Link } from "react-router-dom";
 
-
 /**
- * ${1:Description placeholder}
+ * Composant de la barre de navigation latérale.
+ * Affiche une série d'icônes représentant différentes activités, chaque icône étant un lien de navigation.
  *
  * @export
- * @returns {${2:*}}
+ * @returns {JSX.Element} Le composant de la barre de navigation latérale.
  */
-export default function sideNavBar() {
+export default function SideNavBar() {
   return (
     <div className="sideNavBarContainer">
       <ul className="sideNavBarButtonContainer">
@@ -22,22 +22,22 @@ export default function sideNavBar() {
           </li>
           <li>
             <Link className="sideNavBarButton">
-              <img src={swim} alt="swimmer" />
+              <img src={swim} alt="Swimming" />
             </Link>
           </li>
           <li>
             <Link className="sideNavBarButton">
-              <img src={bike} alt="Bike" />
+              <img src={bike} alt="Cycling" />
             </Link>
           </li>
           <li>
             <Link className="sideNavBarButton">
-              <img src={barbell} alt="barbell" />
+              <img src={barbell} alt="Weightlifting" />
             </Link>
           </li>
       </ul>
       
-      <div className="copyright">Copiryght, SportSee 2020</div>
+      <div className="copyright">Copyright, SportSee 2020</div>
     </div>
   )
 }

@@ -1,7 +1,15 @@
 /**
- * ${1:Description placeholder}
+  * Tableau des données principales des utilisateurs.
+ * Chaque objet représente un utilisateur avec ses informations personnelles,
+ * son score du jour, et ses données clés.
  *
- * @type {{}\}
+ * @type {{ 
+*   id: number, 
+*   userInfos: { 
+*     firstName: string, 
+*     lastName: string, 
+*     age: number 
+*   }
  */
 export const USER_MAIN_DATA = [
     {
@@ -98,9 +106,18 @@ export const USER_MAIN_DATA = [
   ];
   
   /**
- * ${1:Description placeholder}
+ * Tableau des activités des utilisateurs.
+ * Chaque objet représente les sessions d'activité pour un utilisateur spécifique,
+ * avec des mesures de poids et de calories pour chaque jour.
  *
- * @type {{}\}
+ * @type {{
+  *   userId: number, 
+  *   sessions: { 
+  *     day: string, 
+  *     kilogram: number, 
+  *     calories: number 
+ *
+ * }\}}
  */
 export const USER_ACTIVITY = [
     {
@@ -347,9 +364,15 @@ export const USER_ACTIVITY = [
   ];
   
   /**
- * ${1:Description placeholder}
+  * Tableau des sessions moyennes des utilisateurs.
+ * Chaque objet représente les sessions moyennes d'un utilisateur spécifique,
+ * avec la longueur des sessions pour chaque jour de la semaine.
  *
- * @type {{}\}
+ * @type {{
+ *      userId: number, 
+  *     sessions: { 
+  *     day: number, 
+  *     sessionLength: number}\}
  */
 export const USER_AVERAGE_SESSIONS = [
     {
@@ -553,9 +576,20 @@ export const USER_AVERAGE_SESSIONS = [
   ];
   
   /**
- * ${1:Description placeholder}
+  * Tableau des performances des utilisateurs.
+ * Chaque objet représente les performances d'un utilisateur spécifique,
+ * avec des valeurs pour différents types d'exercice.
  *
- * @type {{}\}
+ * @type {{
+ *  userId: number, 
+  *   kind: { 
+  *     [key: number]: string 
+  *   }, 
+  *   data: { 
+  *     value: number, 
+  *     kind: number 
+  *   }
+ * }\}
  */
 export const USER_PERFORMANCE = [
     {

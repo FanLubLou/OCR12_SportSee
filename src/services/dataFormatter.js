@@ -1,14 +1,14 @@
 /**
- * ${1:Description placeholder}
+ * Formate les données d'activité utilisateur.
  *
- * @param {${2:*}} data
- * @returns {{ data: any; }\}
+ * Cette fonction prend en entrée des données d'activité brute et les transforme
+ * en un format utilisable par l'application. Chaque session se voit attribuer
+ * un jour du mois (numérique).
+ *
+ * @param {{ sessions: { day: string, [key: string]: any }[] }} data - Les données d'activité utilisateur à formater.
+ * @returns {{ data: { sessions: { day: number, [key: string]: any }[] } }} - Les données formatées avec les sessions modifiées.
  */
 export const formatUserActivityData = (data) => {
-    // if (!data || !data.data || !data.data.sessions) {
-    //     throw new Error('Invalid data format');
-    // }
-
     const formattedSessions = data.sessions.map(session => {
         const date = new Date(session.day);
         return {
@@ -18,7 +18,6 @@ export const formatUserActivityData = (data) => {
     });
 
     return {
-        
         data: {
             ...data.data,
             sessions: formattedSessions
@@ -26,18 +25,16 @@ export const formatUserActivityData = (data) => {
     };
 };
 
-
 /**
- * ${1:Description placeholder}
+ * Formate les données de sessions moyennes de l'utilisateur.
  *
- * @param {${2:*}} data
- * @returns {{ data: any; }\}
+ * Cette fonction prend en entrée des données de sessions moyennes brutes et les transforme
+ * en un format utilisable par l'application. Les jours sont représentés par des lettres.
+ *
+ * @param {{ sessions: { day: number, sessionLength: number }[] }} data - Les données de sessions moyennes à formater.
+ * @returns {{ data: { sessions: { day: string, sessionLength: number }[] } }} - Les données formatées avec les jours représentés par des lettres.
  */
 export const formatUserAverageSessions = (data) => {
-    // if (!data || !data.data || !data.data.sessions || !Array.isArray(data.data.sessions)) {
-    //     throw new Error('Invalid data format');
-    // }
-
     const days = ["L", "M", "M", "J", "V", "S", "D"];
 
     const formattedSessions = data.sessions.map((session, index) => {
@@ -52,7 +49,6 @@ export const formatUserAverageSessions = (data) => {
     });
 
     return {
-        
         data: {
             ...data.data,
             sessions: formattedSessions
@@ -61,18 +57,15 @@ export const formatUserAverageSessions = (data) => {
 };
 
 /**
- * ${1:Description placeholder}
+ * Formate les données de performance de l'utilisateur.
  *
- * @param {${2:*}} data
- * @returns {${3:*}}
+ * Cette fonction prend en entrée des données de performance brutes et les transforme
+ * en un format utilisable par l'application. Les types de performance sont traduits en français.
+ *
+ * @param {{ value: number, kind: number }[] } data - Les données de performance à formater.
+ * @returns {{ value: number, kind: string }[] } - Les données formatées avec les types de performance traduits.
  */
 export const formatUserPerformanceData = (data) => {
-   
-
-    // if (!data || !data.data || !data.kind) {
-    //     throw new Error("Invalid performance data format");
-    // }
-
     const translate = {
         1: "Cardio",
         2: "Energie",

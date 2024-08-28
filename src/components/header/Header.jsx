@@ -1,21 +1,20 @@
-import React from 'react'
+import React from 'react';
 
 /**
- * ${1:Description placeholder}
+ * Composant d'en-tête affichant un message de bienvenue personnalisé.
  *
  * @export
- * @param {{ value: any; }} param0
- * @param {${2:*}} param0.value
- * @returns {${3:*}\}
+ * @param {{ value: string; }} props - Les propriétés du composant.
+ * @param {string} props.value - Le nom de l'utilisateur à afficher dans le message de bienvenue.
+ * @returns {JSX.Element} Le composant d'en-tête avec le message de bienvenue.
  */
-export default function header({ value }) {
-  
-   return (
+export default function Header({ value }) {
+  return (
     <div>
       <h1 className='headerBonjour'>
         Bonjour <span className='headerSpan'>{value}</span>
       </h1>
-      <p className='headerP'>Félicitation ! Vous avez explosé vos objectifs hier 👏</p>
-      </div>  
-  )
+      <p className='headerP'>Félicitations ! Vous avez explosé vos objectifs hier 👏</p>
+    </div>
+  );
 }

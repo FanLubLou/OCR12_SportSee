@@ -1,10 +1,12 @@
-import { Link } from "react-router-dom"
+import { Link } from "react-router-dom";
 
 /**
- * ${1:Description placeholder}
+ * Composant affichant une page d'erreur 404.
+ * Ce composant informe l'utilisateur que la page demandée n'existe pas
+ * et propose un lien pour retourner à la page d'accueil.
  *
  * @export
- * @returns {${2:*}}
+ * @returns {JSX.Element} Le rendu de la page d'erreur 404, incluant un message et un lien de retour.
  */
 export default function Error() {
     return (        
@@ -13,5 +15,5 @@ export default function Error() {
             <p className='Error404Content'>Oups! La page que vous demandez n'existe pas.</p>
             <Link className='Error404Link' to='/'>Retourner sur la page d'accueil</Link>
         </div>            
-  )
+    )
 }

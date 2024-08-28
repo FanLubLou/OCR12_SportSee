@@ -7,9 +7,9 @@ import Dashboard from "./pages/dashboard/Dashboard.jsx";
 import DataProvider from './services/dataProvider.js';
 
 /**
- * ${1:Description placeholder}
+ * Composant principal de l'application qui configure les routes et l'interface utilisateur.
  *
- * @returns {${2:*}}
+ * @returns {${JSX.Element}}
  */
 function App() {
   return (
