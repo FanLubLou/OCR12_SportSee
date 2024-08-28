@@ -1,35 +1,40 @@
 import React, { PureComponent } from 'react';
-import { LineChart, Line, XAxis, YAxis, Tooltip, ResponsiveContainer} from 'recharts';
+import { LineChart, Line, XAxis, YAxis, Tooltip, ResponsiveContainer } from 'recharts';
 
 /**
- * ${1:Description placeholder}
+ * Composant de graphique en ligne pour afficher la durée moyenne des sessions.
  *
  * @export
  * @class LineChartSportSee
- * @typedef {LineChartSportSee}
  * @extends {PureComponent}
  */
 export default class LineChartSportSee extends PureComponent {
   
   /**
- * ${1:Description placeholder}
- *
- * @returns {${2:*}}
- */
-render() {
+   * Render le composant graphique en ligne.
+   *
+   * @returns {JSX.Element} Un conteneur réactif contenant un graphique en ligne.
+   */
+  render() {
     const { data } = this.props;
 
+    /**
+     * Composant personnalisé pour l'affichage des informations dans l'infobulle.
+     *
+     * @param {Object} props - Les propriétés passées au composant Tooltip.
+     * @param {boolean} props.active - Indique si l'infobulle est active.
+     * @param {Array} props.payload - Les données de la session affichées dans l'infobulle.
+     * @returns {JSX.Element|null} L'infobulle avec la durée de session ou null si inactive.
+     */
     function CustomTooltip({ active, payload }) {
       if (active && payload) {
         return <div className='tooltipContainerLineChart'>{`${payload[0].value} min`}</div>;
       }
-    
       return null;
     }
 
     return (
       <ResponsiveContainer width="100%" height="100%" className="lineChart">
-        
         <LineChart
           data={data}
           width={500}
@@ -56,7 +61,7 @@ render() {
             <tspan x={30} y={65} fontSize="15">
               sessions
             </tspan>
-          </text>          
+          </text>
           <XAxis
             dataKey="day"
             axisLine={false}
@@ -81,17 +86,13 @@ render() {
             dataKey="sessionLength"
             stroke="#FBFBFB"
             dot={false}
-            activeDot={{ 
+            activeDot={{
               stroke: "rgba(255,255,255, 0.3)",
               strokeWidth: 10,
               r: 5,
-            }} />
-           <linearGradient id="colorUv" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="5%" stopColor="#FFFFFF" stopOpacity={0.8} />
-            <stop offset="95%" stopColor="rgba(255, 255, 255, 0.403191)" stopOpacity={0} />
-          </linearGradient>
-          
-          </LineChart>
+            }}
+          />          
+        </LineChart>
       </ResponsiveContainer>
     );
   }

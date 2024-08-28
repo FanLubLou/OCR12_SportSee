@@ -2,36 +2,42 @@ import React, { PureComponent } from 'react';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 import '../../assets/style/main.css';
 
-
 /**
- * ${1:Description placeholder}
+ * Composant de graphique à barres pour afficher les données de poids et de calories brûlées.
  *
  * @export
  * @class BarChartSportSee
- * @typedef {BarChartSportSee}
  * @extends {PureComponent}
  */
 export default class BarChartSportSee extends PureComponent {
   /**
- * ${1:Description placeholder}
- *
- * @returns {${2:*}}
- */
-render() {
-    const { data } = this.props; 
+   * Rend le composant graphique à barres.
+   *
+   * @returns {JSX.Element} Un conteneur réactif contenant un graphique à barres.
+   */
+  render() {
+    const { data } = this.props;
+    console.log('données du BarChart: ', data);
 
+    /**
+     * Composant personnalisé pour l'affichage des informations dans l'infobulle.
+     *
+     * @param {Object} props - Les propriétés passées au composant Tooltip.
+     * @param {boolean} props.active - Indique si l'infobulle est active.
+     * @param {Array} props.payload - Les données de la session affichées dans l'infobulle.
+     * @returns {JSX.Element|null} L'infobulle avec les valeurs de poids et de calories ou null si inactive.
+     */
     function CustomTooltip({ active, payload }) {
       if (active && payload) {
-          return (
-              <div className="tooltipContainerBarChart">
-                  <p>{`${payload[0].value}Kg`}</p>
-                  <p>{`${payload[1].value}kCal`}</p>
-              </div>
-          );
+        return (
+          <div className="tooltipContainerBarChart">
+            <p>{`${payload[0].value}Kg`}</p>
+            <p>{`${payload[1].value}kCal`}</p>
+          </div>
+        );
       }
-
       return null;
-  }
+    }
 
     return (
       <ResponsiveContainer width="100%" height="100%">
@@ -39,19 +45,18 @@ render() {
           data={data}
           barGap={8}
           margin={{
-              top: 100,
-              right: 40,
-              left: 40,
-              bottom: 40,
+            top: 100,
+            right: 40,
+            left: 40,
+            bottom: 40,
           }}
-      >
+        >
           <CartesianGrid
             strokeDasharray="3 3"
             vertical={false}
           />
           <XAxis
             dataKey="day"
-            axisLine={true}
             tickLine={false}
             tick={{ fontSize: '14px', fontWeight: '500' }}
             dy={15}
@@ -92,7 +97,7 @@ render() {
             radius={[20, 20, 0, 0]}
           />
           <Tooltip cursor={{ fill: "rgba(0, 0, 0, 0.1)" }} content={<CustomTooltip />} />
-          <Legend verticalAlign="top" align='right' iconSize={10} wrapperStyle={{ top: "2rem", right: 0 }} />          
+          <Legend verticalAlign="top" align='right' iconSize={10} wrapperStyle={{ top: "20px", right: 0 }} />
         </BarChart>
       </ResponsiveContainer>
     );
