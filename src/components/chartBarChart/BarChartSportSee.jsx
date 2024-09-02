@@ -17,8 +17,7 @@ export default class BarChartSportSee extends PureComponent {
    */
   render() {
     const { data } = this.props;
-    console.log('données du BarChart: ', data);
-
+    
     /**
      * Composant personnalisé pour l'affichage des informations dans l'infobulle.
      *
@@ -39,8 +38,15 @@ export default class BarChartSportSee extends PureComponent {
       return null;
     }
 
+    const legendFormatter = (value, entry) => {
+      return <span style={{ color: '#000' }}>{value}</span>;
+    };
+
     return (
-      <ResponsiveContainer width="100%" height="100%">
+      <ResponsiveContainer
+        width="100%"
+        height="100%">
+        
         <BarChart
           data={data}
           barGap={8}
@@ -51,7 +57,7 @@ export default class BarChartSportSee extends PureComponent {
             bottom: 40,
           }}
         >
-          <CartesianGrid
+         <CartesianGrid
             strokeDasharray="3 3"
             vertical={false}
           />
@@ -96,8 +102,28 @@ export default class BarChartSportSee extends PureComponent {
             unit="Kcal"
             radius={[20, 20, 0, 0]}
           />
-          <Tooltip cursor={{ fill: "rgba(0, 0, 0, 0.1)" }} content={<CustomTooltip />} />
-          <Legend verticalAlign="top" align='right' iconSize={10} wrapperStyle={{ top: "20px", right: 0 }} />
+          <Tooltip
+            cursor={{ fill: "rgba(0, 0, 0, 0.1)" }}
+            content={<CustomTooltip />}
+          />
+          <Legend
+            verticalAlign="top"
+            align='right'
+            iconSize={10}
+            wrapperStyle={{
+              top: "20px",
+              right: "30px",
+              fontSize: "14px"
+            }}
+            formatter={legendFormatter}
+          />
+          <text
+            className='barChartTitle'
+            x={70}
+            y={30}
+          >
+            Activité quotidienne
+          </text>
         </BarChart>
       </ResponsiveContainer>
     );

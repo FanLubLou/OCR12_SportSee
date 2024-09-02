@@ -34,7 +34,7 @@ export default class PieChartSportSee extends PureComponent {
     ];
 
     return (
-      <ResponsiveContainer width="100%" height="100%" className="pieChart">
+      <ResponsiveContainer width="100%" height="100%" className="pieChartBG">
         <PieChart width={400} height={400}>
           <text x={40} y={40} fill="#20253A" fontWeight={500} textAnchor="left" dominantBaseline="central">
             <tspan fontSize="15">Score</tspan>
