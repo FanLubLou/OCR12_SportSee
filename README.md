@@ -139,3 +139,9 @@ This project includes four endpoints directly from the backend that you will be 
 
 https://sportseebyjc.netlify.app/
 Only the development data will work.
+
+### switchable variable to use backend data or mocked data
+
+You can access to a switchable variable in config.js. 
+if USE_MOCK_DATA = true, the application will use the mocked data
+if USE_MOCK_DATA = false, the application will use the backend data

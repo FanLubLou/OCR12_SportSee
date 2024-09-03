@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import dataService from './dataService';
 import { USER_ACTIVITY, USER_AVERAGE_SESSIONS, USER_PERFORMANCE } from '../data/mockedData';
 import { formatUserActivityData, formatUserAverageSessions, formatUserPerformanceData } from './dataFormatter';
+import { USE_MOCK_DATA } from '../config.js';
 
 /**
  * Composant DataProvider.
@@ -29,7 +30,7 @@ function DataProvider({ dataType }) {
                 let fetchedData;
                 
                 // Vérifie si l'utilisateur est dans la liste des utilisateurs mockés
-                if ([1, 2, 3, 4, 5, 6].includes(userId)) {
+                if (USE_MOCK_DATA) {
                     switch (dataType) {
                         case 'average-sessions':
                             fetchedData = formatUserAverageSessions(USER_AVERAGE_SESSIONS[userId - 1]);

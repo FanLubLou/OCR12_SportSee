@@ -14,6 +14,7 @@ import lipid from "../../assets/icons/lipid-icon.png";
 import protein from "../../assets/icons/protein-icon.png";
 import { USER_MAIN_DATA, USER_ACTIVITY, USER_AVERAGE_SESSIONS, USER_PERFORMANCE } from '../../data/mockedData.js';
 import { formatUserActivityData, formatUserAverageSessions, formatUserPerformanceData } from '../../services/dataFormatter.js';
+import { USE_MOCK_DATA } from '../../config.js';
 
 /**
  * Composant Dashboard qui affiche les données utilisateur sous forme de graphiques et de cartes.
@@ -42,8 +43,21 @@ export default function Dashboard() {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                if ([12, 18].includes(userId)) {
+                if (USE_MOCK_DATA) {
+                    // Récupération des données mockées
+                    const mockedUserDataResponse = USER_MAIN_DATA.find(user => user.id === userId);
+                    if (!mockedUserDataResponse) throw new Error("Utilisateur non trouvé dans les données mockées");
                     
+                    const mockedUserActivity = formatUserActivityData(USER_ACTIVITY.find(user => user.userId === userId));
+                    const mockedAverageSessions = formatUserAverageSessions(USER_AVERAGE_SESSIONS.find(user => user.userId === userId));
+                    const mockedUserPerformance = formatUserPerformanceData(USER_PERFORMANCE.find(user => user.userId === userId).data);
+
+                    setActivityData(mockedUserActivity.data.sessions);
+                    setAverageSessionsData(mockedAverageSessions.data.sessions);
+                    setPerformanceData(mockedUserPerformance);
+                    setUserData(mockedUserDataResponse);
+                } else {
+                    // Récupération des données du backend
                     const [activityResponse, averageSessionsResponse, performanceResponse, userDataResponse] = await Promise.all([
                         dataService.getUserActivity(userId),
                         dataService.getUserAverageSessions(userId),
@@ -55,21 +69,7 @@ export default function Dashboard() {
                     setAverageSessionsData(averageSessionsResponse.data.sessions);
                     setPerformanceData(performanceResponse);
                     setUserData(userDataResponse.data);
-                } else if ([1, 2, 3, 4, 5, 6].includes(userId)) {
-                    
-                    const mockedUserDataResponse = USER_MAIN_DATA[userId - 1];
-                    const mockedUserActivity = formatUserActivityData(USER_ACTIVITY[userId - 1]);
-                    const mockedAverageSessions = formatUserAverageSessions(USER_AVERAGE_SESSIONS[userId - 1]);
-                    const mockedUserPerformance = formatUserPerformanceData(USER_PERFORMANCE[userId - 1].data);
-
-                    setActivityData(mockedUserActivity.data.sessions);
-                    setAverageSessionsData(mockedAverageSessions.data.sessions);
-                    setPerformanceData(mockedUserPerformance);
-                    setUserData(mockedUserDataResponse);
-                } else {
-                    
-                    throw new Error("Utilisateur non trouvé");
-                }
+                } 
             } catch (error) {
                 console.error("Error fetching data:", error);
                 setError(error);
