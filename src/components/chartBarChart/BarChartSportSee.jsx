@@ -51,10 +51,10 @@ export default class BarChartSportSee extends PureComponent {
           data={data}
           barGap={8}
           margin={{
-            top: 100,
-            right: 40,
-            left: 40,
-            bottom: 40,
+            top: 60,
+            right: 20,
+            left: 20,
+            bottom: 20,
           }}
         >
          <CartesianGrid

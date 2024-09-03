@@ -55,10 +55,16 @@ export default class LineChartSportSee extends PureComponent {
             textAnchor="left"
             dominantBaseline="central"
           >
-            <tspan x={30} y={40} fontSize="15">
+            <tspan
+              x={30}
+              y={40}
+              fontSize="clamp(8px, 1vw, 15px)">
               Durée moyenne des
             </tspan>
-            <tspan x={30} y={65} fontSize="15">
+            <tspan
+              x={30}
+              y={65}
+              fontSize="clamp(8px, 1vw, 15px)">
               sessions
             </tspan>
           </text>
@@ -67,7 +73,7 @@ export default class LineChartSportSee extends PureComponent {
             axisLine={false}
             tickLine={false}
             tick={{
-              fontSize: "clamp(20px, 2vw, 24px)",
+              fontSize: "clamp(8px, 1vw, 12px)",
               fontWeight: "500",
               fill: "#fff",
               opacity: "0.5",
